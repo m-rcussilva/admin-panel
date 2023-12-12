@@ -1,5 +1,7 @@
 package app.netlify.marcussilva.adminpanelapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class StateEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,9 +20,11 @@ public class StateEntity {
     private String stateName;
     @ManyToOne
     @JoinColumn(name = "country_id")
+    @JsonIgnore
     private CountryEntity countryEntity;
 
-    public StateEntity() {}
+    public StateEntity() {
+    }
 
     public StateEntity(Long id, String stateName, CountryEntity countryEntity) {
         this.id = id;

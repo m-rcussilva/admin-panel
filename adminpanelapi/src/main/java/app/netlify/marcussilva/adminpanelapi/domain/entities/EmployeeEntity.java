@@ -12,6 +12,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +21,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class EmployeeEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,13 +45,13 @@ public class EmployeeEntity {
     private EnumRole enumRole;
     @Column(nullable = false)
     private BigDecimal salary;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private CountryEntity countryEntity;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "state_id")
     private StateEntity stateEntity;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id")
     private CityEntity cityEntity;
     @Column(nullable = false)
@@ -59,10 +60,12 @@ public class EmployeeEntity {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public EmployeeEntity() {}
+    public EmployeeEntity() {
+    }
 
     public EmployeeEntity(Long id, String firstName, String lastName, EnumGender enumGender, String email,
-            LocalDate birthDate, String rg, String cpf, EnumRole enumRole, BigDecimal salary, CountryEntity countryEntity,
+            LocalDate birthDate, String rg, String cpf, EnumRole enumRole, BigDecimal salary,
+            CountryEntity countryEntity,
             StateEntity stateEntity, CityEntity cityEntity, LocalDate admissionDate, LocalDateTime createdAt) {
         this.id = id;
         this.firstName = firstName;

@@ -2,6 +2,8 @@ package app.netlify.marcussilva.adminpanelapi.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,16 +13,18 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class CountryEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String countryName;
     @OneToMany(mappedBy = "countryEntity")
+    @JsonIgnore
     private List<EmployeeEntity> employeeCountry;
 
-    public CountryEntity() {}
+    public CountryEntity() {
+    }
 
     public CountryEntity(Long id, String countryName, List<EmployeeEntity> employeeCountry) {
         this.id = id;
