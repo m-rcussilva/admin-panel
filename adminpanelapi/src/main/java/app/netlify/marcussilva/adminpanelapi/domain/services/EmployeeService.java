@@ -23,4 +23,8 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public EmployeeEntity createEmployee(EmployeeEntity employeeEntity) {
+        return employeeRepository.save(employeeEntity);
+    }
+
 }

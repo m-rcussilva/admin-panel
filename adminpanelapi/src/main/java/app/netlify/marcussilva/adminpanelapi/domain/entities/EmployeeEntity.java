@@ -1,10 +1,17 @@
 package app.netlify.marcussilva.adminpanelapi.domain.entities;
 
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import app.netlify.marcussilva.adminpanelapi.domain.enums.EnumGender;
 import app.netlify.marcussilva.adminpanelapi.domain.enums.EnumRole;
@@ -12,12 +19,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class EmployeeEntity {
@@ -45,28 +49,38 @@ public class EmployeeEntity {
     private EnumRole enumRole;
     @Column(nullable = false)
     private BigDecimal salary;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "country_id")
-    private CountryEntity countryEntity;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "state_id")
-    private StateEntity stateEntity;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "city_id")
-    private CityEntity cityEntity;
+
     @Column(nullable = false)
+    private String cep;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
+
+    @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate admissionDate;
     @CreatedDate
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate createdAt;
+
+    public static class LocalDateDeserializer implements JsonDeserializer<LocalDate> {
+        @Override
+        public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
+            return LocalDate.parse(json.getAsString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
+    }
 
     public EmployeeEntity() {
     }
 
     public EmployeeEntity(Long id, String firstName, String lastName, EnumGender enumGender, String email,
-            LocalDate birthDate, String rg, String cpf, EnumRole enumRole, BigDecimal salary,
-            CountryEntity countryEntity,
-            StateEntity stateEntity, CityEntity cityEntity, LocalDate admissionDate, LocalDateTime createdAt) {
+            LocalDate birthDate, String rg, String cpf, EnumRole enumRole, BigDecimal salary, String cep,
+            String logradouro, String complemento, String bairro, String localidade, String uf, LocalDate admissionDate,
+            LocalDate createdAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -77,9 +91,12 @@ public class EmployeeEntity {
         this.cpf = cpf;
         this.enumRole = enumRole;
         this.salary = salary;
-        this.countryEntity = countryEntity;
-        this.stateEntity = stateEntity;
-        this.cityEntity = cityEntity;
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
         this.admissionDate = admissionDate;
         this.createdAt = createdAt;
     }
@@ -164,28 +181,52 @@ public class EmployeeEntity {
         this.salary = salary;
     }
 
-    public CountryEntity getCountryEntity() {
-        return countryEntity;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCountryEntity(CountryEntity countryEntity) {
-        this.countryEntity = countryEntity;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public StateEntity getStateEntity() {
-        return stateEntity;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setStateEntity(StateEntity stateEntity) {
-        this.stateEntity = stateEntity;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public CityEntity getCityEntity() {
-        return cityEntity;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setCityEntity(CityEntity cityEntity) {
-        this.cityEntity = cityEntity;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public LocalDate getAdmissionDate() {
@@ -196,11 +237,11 @@ public class EmployeeEntity {
         this.admissionDate = admissionDate;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
