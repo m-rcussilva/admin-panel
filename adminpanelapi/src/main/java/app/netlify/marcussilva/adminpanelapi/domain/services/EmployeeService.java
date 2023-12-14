@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.netlify.marcussilva.adminpanelapi.domain.entities.EmployeeEntity;
+import app.netlify.marcussilva.adminpanelapi.domain.exceptions.EmployeeNotFoundException;
 import app.netlify.marcussilva.adminpanelapi.repositories.EmployeeRepository;
 
 @Service
@@ -25,6 +26,19 @@ public class EmployeeService {
 
     public EmployeeEntity createEmployee(EmployeeEntity employeeEntity) {
         return employeeRepository.save(employeeEntity);
+    }
+
+    public void deleteEmployeeById(Long id) {
+        employeeRepository.deleteById(id);
+    }
+
+    public EmployeeEntity updateEmployee(Long id, EmployeeEntity updateEmployee) {
+        if (employeeRepository.existsById(id)) {
+            updateEmployee.setId(id);
+            return employeeRepository.save(updateEmployee);
+        } else {
+            throw new EmployeeNotFoundException(id);
+        }
     }
 
 }
