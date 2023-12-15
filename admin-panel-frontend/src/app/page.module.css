@@ -1,0 +1,19 @@
+.HomeContainer {
+    background-image: url("/images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.HomeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f5f5f7;
+}
+
+.HomeTitle {
+    text-align: center;
+}
