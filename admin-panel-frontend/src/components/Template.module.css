@@ -5,6 +5,66 @@
 
 .HeaderContainer {
     width: 100%;
-    margin: 1rem auto;
     background-color: #282829;
+    padding: 1rem;
+    color: var(--white-text-color);
+}
+
+.HeaderLogo {
+    display: flex;
+    align-items: center;
+}
+
+.HeaderLogo h3 {
+    margin-left: 5px;
+}
+
+.SidebarContainer {
+    width: 300px;
+    height: 100%;
+    background-color: #434344;
+    overflow-wrap: break-word;
+    padding: 1rem;
+    color: var(--white-text-color);
+}
+
+.SidebarToggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    width: 45px;
+    height: 45px;
+}
+
+.Line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 8px;
+    transition: 0.4s;
+}
+
+.LineOne {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.LineTwo {
+    opacity: 0;
+}
+
+.LineThree {
+    transform: rotate(-45deg);
+    position: absolute;
 }
