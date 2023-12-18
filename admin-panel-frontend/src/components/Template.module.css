@@ -1,5 +1,10 @@
 .GlobalContainer {
     max-width: 1280px;
     margin: 0 auto;
-    border: 1px solid red;
+}
+
+.HeaderContainer {
+    width: 100%;
+    margin: 1rem auto;
+    background-color: #282829;
 }

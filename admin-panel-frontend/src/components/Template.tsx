@@ -15,8 +15,10 @@ export function Template({ children }: TemplateProps) {
 
 function Header() {
     return (
-        <header>
-            <h3>Painel Administrativo</h3>
-        </header>
+        <div className={styles.HeaderContainer}>
+            <header className={styles.Header}>
+                <h3>Painel Administrativo</h3>
+            </header>
+        </div>
     )
 }

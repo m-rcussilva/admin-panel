@@ -1,0 +1,62 @@
+.HomeContainer {
+    background-image: url("/images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.HomeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white-text-color);
+}
+
+.HomeTitle {
+    text-align: center;
+}
+
+.HomeLoginForm {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    padding: 2rem;
+}
+
+.HomeLoginForm label {
+    margin-bottom: 5px;
+}
+
+.HomeLoginForm input {
+    margin-bottom: 15px;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    width: 320px;
+    max-width: 360px;
+    font-size: 1.2rem;
+}
+
+.HomeLoginFormButtonContainer {
+    width: 100%;
+}
+
+.HomeLoginFormButtonContainer button {
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 0.35rem 0;
+}
