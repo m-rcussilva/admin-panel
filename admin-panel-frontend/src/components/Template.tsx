@@ -1,5 +1,13 @@
+"use client"
+
+import { useState } from "react"
 import styles from "./Template.module.css"
 import { MdAdminPanelSettings } from "react-icons/md"
+import { GiHamburgerMenu } from "react-icons/gi"
+import { IoMdClose } from "react-icons/io"
+import { MdDashboard } from "react-icons/md"
+import { MdOutlineSettings } from "react-icons/md"
+import { FaPowerOff } from "react-icons/fa"
 
 interface TemplateProps {
     children: React.ReactNode
@@ -29,26 +37,40 @@ function Header() {
 }
 
 function Sidebar() {
-    return (
-        <aside className={styles.SidebarContainer}>
-            <div className={styles.SidebarToggle}>
-                <div
-                    className={`${styles.Line} ${styles.LineOne}`}
-                    id="lineOne"
-                ></div>
-                <div
-                    className={`${styles.Line} ${styles.LineTwo}`}
-                    id="lineTwo"
-                ></div>
-                <div
-                    className={`${styles.Line} ${styles.LineThree}`}
-                    id="lineThree"
-                ></div>
-            </div>
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-            <div>
-                <h3>Dashboard</h3>
-            </div>
+    const toggleMenu = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
+    return (
+        <aside
+            className={`${styles.SidebarContainer} ${
+                isSidebarOpen ? "" : styles.OpenSidebar
+            }`}
+        >
+            <button className={styles.Toggle} onClick={toggleMenu}>
+                <span>
+                    {isSidebarOpen ? <GiHamburgerMenu /> : <IoMdClose />}
+                </span>
+            </button>
+
+            <ul>
+                <li>
+                    <MdDashboard />
+                    <label htmlFor="">Dashboard</label>
+                </li>
+
+                <li>
+                    <MdOutlineSettings />
+                    <label htmlFor="">Configurações</label>
+                </li>
+
+                <li>
+                    <FaPowerOff />
+                    <label htmlFor="">Sair</label>
+                </li>
+            </ul>
         </aside>
     )
 }
