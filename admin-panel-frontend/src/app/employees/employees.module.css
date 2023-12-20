@@ -1,0 +1,24 @@
+.EmployeeListPageContainer {
+    margin: 2rem;
+}
+
+.EmployeeListPageAddEmployeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.EmployeeListPageTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.EmployeeListPageTable th {
+    text-align: left;
+}
+
+.EmployeeListPageTable th,
+.EmployeeListPageTable td {
+    border: 1px solid lightgray;
+}

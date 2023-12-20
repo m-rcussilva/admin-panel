@@ -16,25 +16,24 @@ interface TemplateProps {
 export function Template({ children }: TemplateProps) {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Sidebar />
             <div className={styles.GlobalContainer}>{children}</div>
         </>
     )
 }
 
-function Header() {
-    return (
-        <div className={styles.HeaderContainer}>
-            <header className={styles.Header}>
-                <div className={styles.HeaderLogo}>
-                    <MdAdminPanelSettings size={38} />
-                    <h3>Painel Administrativo</h3>
-                </div>
-            </header>
-        </div>
-    )
-}
+// function Header() {
+//     return (
+//         <div className={styles.HeaderContainer}>
+//             <header className={styles.Header}>
+//                 <div className={styles.HeaderLogutBtn}>
+//                     <a>Sair</a>
+//                 </div>
+//             </header>
+//         </div>
+//     )
+// }
 
 function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -51,9 +50,18 @@ function Sidebar() {
         >
             <button className={styles.Toggle} onClick={toggleMenu}>
                 <span>
-                    {isSidebarOpen ? <GiHamburgerMenu /> : <IoMdClose />}
+                    {isSidebarOpen ? (
+                        <GiHamburgerMenu size={24} title={"Open"} />
+                    ) : (
+                        <IoMdClose size={24} title={"Close"} />
+                    )}
                 </span>
             </button>
+
+            <header className={styles.HeaderLogo}>
+                <MdAdminPanelSettings size={38} />
+                <h3>Painel Administrativo</h3>
+            </header>
 
             <ul>
                 <li>

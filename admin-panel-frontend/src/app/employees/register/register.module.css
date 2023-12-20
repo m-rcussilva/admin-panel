@@ -1,0 +1,26 @@
+.FormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormBoxContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.FormInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.FormInput input {
+    padding: 0.5rem;
+}
+
+.FormInputMarginRight {
+    margin-right: 10px;
+}
+.FormInputMarginLeft {
+    margin-left: 10px;
+}
