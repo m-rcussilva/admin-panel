@@ -1,8 +1,17 @@
+"use client"
+
 import { Template } from "@/components/Template"
 import styles from "./employees.module.css"
 import RegisterEmployee from "./register/page"
+import { useState } from "react"
 
 export default function EmployeeListPage() {
+    const [showForm, setShowForm] = useState(false)
+
+    const handleShowForm = () => {
+        setShowForm(!showForm)
+    }
+
     return (
         <Template>
             <div className={styles.EmployeeListPageContainer}>
@@ -11,10 +20,13 @@ export default function EmployeeListPage() {
                         Lista de Funcionários
                     </h2>
 
-                    <button>+ Funcionário</button>
+                    <button onClick={handleShowForm}>
+                        {showForm ? "Cancelar" : "+ Funcionário"}
+                    </button>
                 </div>
 
-                <RegisterEmployee />
+                {/* curto-circuito */}
+                {showForm && <RegisterEmployee />}
 
                 <table className={styles.EmployeeListPageTable}>
                     <thead>

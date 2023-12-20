@@ -139,10 +139,22 @@ export default function RegisterEmployee() {
                     </div>
 
                     <div className={styles.FormBoxContainer}>
-                        <div className={`${styles.FormInput}`}>
+                        <div
+                            className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
+                        >
                             <label htmlFor="">Data de criação</label>
                             <input type="date" name="" id="" />
                         </div>
+
+                        <div
+                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
+                        ></div>
+                    </div>
+
+                    <div className={styles.FormButtonContainer}>
+                        <button className={styles.SubmitButton}>
+                            Registrar Funcionário
+                        </button>
                     </div>
                 </div>
             </form>
