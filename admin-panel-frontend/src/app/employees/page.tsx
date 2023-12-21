@@ -2,8 +2,8 @@
 
 import { Template } from "@/components/Template"
 import styles from "./employees.module.css"
-import RegisterEmployee from "./register/page"
 import { useState } from "react"
+import { RegisterEmployee } from "@/components/register/page"
 
 export default function EmployeeListPage() {
     const [showForm, setShowForm] = useState(false)
