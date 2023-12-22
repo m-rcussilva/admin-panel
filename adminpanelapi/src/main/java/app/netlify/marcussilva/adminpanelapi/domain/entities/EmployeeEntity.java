@@ -39,6 +39,7 @@ public class EmployeeEntity {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
     @Column(nullable = false)
     private String rg;
