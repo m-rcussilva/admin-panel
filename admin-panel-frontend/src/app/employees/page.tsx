@@ -4,12 +4,18 @@ import { Template } from "@/components/Template"
 import styles from "./employees.module.css"
 import { useState } from "react"
 import { RegisterEmployee } from "@/components/register/page"
+import { Employee } from "@/resources/employee/employee.resource"
 
 export default function EmployeeListPage() {
     const [showForm, setShowForm] = useState(false)
+    const [employeeData, setEmployeeData] = useState<Employee[]>([])
 
     const handleShowForm = () => {
         setShowForm(!showForm)
+    }
+
+    const addEmployee = (employee: Employee) => {
+        setEmployeeData([...employeeData, employee])
     }
 
     return (
@@ -26,7 +32,7 @@ export default function EmployeeListPage() {
                 </div>
 
                 {/* curto-circuito */}
-                {showForm && <RegisterEmployee />}
+                {showForm && <RegisterEmployee onRegister={addEmployee} />}
 
                 <table className={styles.EmployeeListPageTable}>
                     <thead>
@@ -38,14 +44,18 @@ export default function EmployeeListPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Marcus</td>
-                            <td>marcus@email.com</td>
-                            <td>Tecnologia da Informação</td>
-                            <td>Detalhes</td>
-                            <td>Editar</td>
-                            <td>Deletar</td>
-                        </tr>
+                        {employeeData.map((employee) => (
+                            <tr key={employee.email}>
+                                <td>
+                                    {employee.firstName} {employee.lastName}
+                                </td>
+                                <td>{employee.email}</td>
+                                <td>{employee.enumRole}</td>
+                                <td>Detalhes</td>
+                                <td>Editar</td>
+                                <td>Deletar</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

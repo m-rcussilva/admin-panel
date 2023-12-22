@@ -1,11 +1,16 @@
 import { useState } from "react"
-import styles from "./register.module.css"
+import styles from "./Register.module.css"
 import { EmployeeService } from "@/resources/employee/employee.service"
 import { EnumGender } from "@/types/EnumGender"
 import { EnumRole } from "@/types/EnumRole"
 import { format } from "date-fns"
+import { Employee } from "@/resources/employee/employee.resource"
 
-export function RegisterEmployee() {
+interface RegisterEmployeeProps {
+    onRegister: (employeeData: Employee) => void
+}
+
+export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -53,6 +58,8 @@ export function RegisterEmployee() {
 
             console.log("Dados do formulário:", formattedDate)
             await employeeService.createEmployee(formattedDate)
+
+            onRegister(formattedDate)
         } catch (error) {
             console.error(error)
 
@@ -331,7 +338,4 @@ export function RegisterEmployee() {
             </form>
         </div>
     )
-}
-function parseISO(arg0: string): any {
-    throw new Error("Function not implemented.")
 }

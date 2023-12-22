@@ -16,24 +16,11 @@ interface TemplateProps {
 export function Template({ children }: TemplateProps) {
     return (
         <>
-            {/* <Header /> */}
             <Sidebar />
             <div className={styles.GlobalContainer}>{children}</div>
         </>
     )
 }
-
-// function Header() {
-//     return (
-//         <div className={styles.HeaderContainer}>
-//             <header className={styles.Header}>
-//                 <div className={styles.HeaderLogutBtn}>
-//                     <a>Sair</a>
-//                 </div>
-//             </header>
-//         </div>
-//     )
-// }
 
 function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
