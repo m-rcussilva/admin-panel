@@ -3,6 +3,7 @@ import styles from "./register.module.css"
 import { EmployeeService } from "@/resources/employee/employee.service"
 import { EnumGender } from "@/types/EnumGender"
 import { EnumRole } from "@/types/EnumRole"
+import { format } from "date-fns"
 
 export function RegisterEmployee() {
     const [formData, setFormData] = useState({
@@ -40,8 +41,18 @@ export function RegisterEmployee() {
         e.preventDefault()
 
         try {
-            console.log("Dados do formulário:", formData)
-            await employeeService.createEmployee(formData)
+            const formattedDate = {
+                ...formData,
+                birthDate: format(new Date(formData.birthDate), "dd/MM/yyyy"),
+                admissionDate: format(
+                    new Date(formData.admissionDate),
+                    "dd/MM/yyyy"
+                ),
+                createdAt: format(new Date(formData.createdAt), "dd/MM/yyyy")
+            }
+
+            console.log("Dados do formulário:", formattedDate)
+            await employeeService.createEmployee(formattedDate)
         } catch (error) {
             console.error(error)
 
@@ -320,4 +331,7 @@ export function RegisterEmployee() {
             </form>
         </div>
     )
+}
+function parseISO(arg0: string): any {
+    throw new Error("Function not implemented.")
 }
