@@ -1,6 +1,6 @@
 import { useState } from "react"
 import styles from "./Register.module.css"
-import { EmployeeService } from "@/resources/employee/employee.service"
+import { CepData, EmployeeService } from "@/resources/employee/employee.service"
 import { EnumGender } from "@/types/EnumGender"
 import { EnumRole } from "@/types/EnumRole"
 import { format } from "date-fns"
@@ -33,14 +33,32 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
 
     const employeeService = new EmployeeService()
 
-    const handleChange = (
+    const handleChange = async (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         })
+
+        // if (e.target.name === "cep" && e.target.value.length === 8) {
+        //     await fetchCepData(e.target.value)
+        // }
     }
+
+    // const fetchCepData = async (cep: string) => {
+    //     try {
+    //         const cepData = await employeeService.fetchCepData(cep)
+
+    //         setFormData({
+    //             ...formData,
+    //             localidade: cepData.localidade || "",
+    //             uf: cepData.uf || ""
+    //         })
+    //     } catch (error) {
+    //         console.error("Erro ao buscar dados do CEP:", error)
+    //     }
+    // }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -224,6 +242,33 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                                 name="cep"
                                 id="cep"
                                 value={formData.cep}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={styles.FormBoxContainer}>
+                        <div
+                            className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
+                        >
+                            <label htmlFor="">Estado</label>
+                            <input
+                                type="text"
+                                name="uf"
+                                id="uf"
+                                value={formData.uf}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div
+                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
+                        >
+                            <label htmlFor="">Cidade</label>
+                            <input
+                                type="text"
+                                name="localidade"
+                                id="localidade"
+                                value={formData.localidade}
                                 onChange={handleChange}
                             />
                         </div>
