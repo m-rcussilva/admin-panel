@@ -5,6 +5,7 @@ import styles from "./employees.module.css"
 import { useState } from "react"
 import { RegisterEmployee } from "@/components/register/page"
 import { Employee } from "@/resources/employee/employee.resource"
+import Link from "next/link"
 
 export default function EmployeeListPage() {
     const [showForm, setShowForm] = useState(false)
@@ -38,20 +39,26 @@ export default function EmployeeListPage() {
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Emailt</th>
+                            <th>Email</th>
                             <th>Cargo</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {employeeData.map((employee) => (
-                            <tr key={employee.email}>
+                        {employeeData.map((employee, index) => (
+                            <tr key={index}>
                                 <td>
                                     {employee.firstName} {employee.lastName}
                                 </td>
                                 <td>{employee.email}</td>
                                 <td>{employee.enumRole}</td>
-                                <td>Detalhes</td>
+                                <td>
+                                    <Link
+                                        href={`/employees/employeeDetails/${index}`}
+                                    >
+                                        Detalhes
+                                    </Link>
+                                </td>
                                 <td>Editar</td>
                                 <td>Deletar</td>
                             </tr>

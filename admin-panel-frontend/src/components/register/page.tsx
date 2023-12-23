@@ -233,72 +233,6 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                         <div
                             className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
                         >
-                            <label htmlFor="">Logradouro</label>
-                            <input
-                                type="text"
-                                name="logradouro"
-                                id="logradouro"
-                                value={formData.logradouro}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
-                        >
-                            <label htmlFor="">Complemento</label>
-                            <input
-                                type="text"
-                                name="complemento"
-                                id="complemento"
-                                value={formData.complemento}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={styles.FormBoxContainer}>
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
-                        >
-                            <label htmlFor="">Bairro</label>
-                            <input
-                                type="text"
-                                name="bairro"
-                                id="bairro"
-                                value={formData.bairro}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
-                        >
-                            <label htmlFor="">Localidade</label>
-                            <input
-                                type="text"
-                                name="localidade"
-                                id="localidade"
-                                value={formData.localidade}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={styles.FormBoxContainer}>
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
-                        >
-                            <label htmlFor="">UF</label>
-                            <input
-                                type="text"
-                                name="uf"
-                                id="uf"
-                                value={formData.uf}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
-                        >
                             <label htmlFor="">Data de admissão</label>
                             <input
                                 type="date"
@@ -308,11 +242,9 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
 
-                    <div className={styles.FormBoxContainer}>
                         <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginRight}`}
+                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
                         >
                             <label htmlFor="">Data de criação</label>
                             <input
@@ -323,10 +255,6 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                                 onChange={handleChange}
                             />
                         </div>
-
-                        <div
-                            className={`${styles.FormInput} ${styles.FormInputMarginLeft}`}
-                        ></div>
                     </div>
 
                     <div className={styles.FormButtonContainer}>
