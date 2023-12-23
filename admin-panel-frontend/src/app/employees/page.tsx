@@ -2,13 +2,31 @@
 
 import { Template } from "@/components/Template"
 import styles from "./employees.module.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { RegisterEmployee } from "@/components/register/page"
 import { Employee } from "@/resources/employee/employee.resource"
+import { EmployeeService } from "@/resources/employee/employee.service"
 
 export default function EmployeeListPage() {
     const [showForm, setShowForm] = useState(false)
     const [employeeData, setEmployeeData] = useState<Employee[]>([])
+
+    const employeeService = new EmployeeService()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await employeeService.getAllEmployees()
+                const employeeDataFromAPI: Employee[] = await response.json()
+
+                setEmployeeData(employeeDataFromAPI)
+            } catch (error) {
+                console.error("Erro ao buscar funcionários do backend:", error)
+            }
+        }
+
+        fetchData()
+    }, [])
 
     const handleShowForm = () => {
         setShowForm(!showForm)

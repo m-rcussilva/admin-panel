@@ -12,4 +12,13 @@ export class EmployeeService {
             body: JSON.stringify(data)
         })
     }
+
+    getAllEmployees() {
+        return fetch(this.baseURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }
 }

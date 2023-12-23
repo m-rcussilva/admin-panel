@@ -1,6 +1,6 @@
 import { useState } from "react"
 import styles from "./Register.module.css"
-import { CepData, EmployeeService } from "@/resources/employee/employee.service"
+import { EmployeeService } from "@/resources/employee/employee.service"
 import { EnumGender } from "@/types/EnumGender"
 import { EnumRole } from "@/types/EnumRole"
 import { format } from "date-fns"
@@ -40,25 +40,7 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
             ...formData,
             [e.target.name]: e.target.value
         })
-
-        // if (e.target.name === "cep" && e.target.value.length === 8) {
-        //     await fetchCepData(e.target.value)
-        // }
     }
-
-    // const fetchCepData = async (cep: string) => {
-    //     try {
-    //         const cepData = await employeeService.fetchCepData(cep)
-
-    //         setFormData({
-    //             ...formData,
-    //             localidade: cepData.localidade || "",
-    //             uf: cepData.uf || ""
-    //         })
-    //     } catch (error) {
-    //         console.error("Erro ao buscar dados do CEP:", error)
-    //     }
-    // }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
