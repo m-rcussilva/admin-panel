@@ -42,35 +42,6 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public ResponseEntity<EmployeeEntity> createEmployee(@RequestBody EmployeeEntity employeeEntity) throws Exception {
-        URL url = new URL("http://viacep.com.br/ws/" + employeeEntity.getCep() + "/json/");
-        URLConnection urlConnection = url.openConnection();
-        InputStream inputStream = urlConnection.getInputStream();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-
-        String cep = "";
-        StringBuilder jsonResponseBuilderForCep = new StringBuilder();
-
-        while ((cep = bufferedReader.readLine()) != null) {
-            jsonResponseBuilderForCep.append(cep);
-        }
-
-        Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new EmployeeEntity.LocalDateDeserializer())
-                .create();
-        EmployeeEntity employeeEntityAux = gson.fromJson(jsonResponseBuilderForCep.toString(), EmployeeEntity.class);
-        String cepAsString = employeeEntityAux.getCep();
-        try {
-            Long cepAsLong = Long.parseLong(cepAsString);
-            employeeEntity.setId(cepAsLong);
-        } catch (NumberFormatException e) {
-            System.err.println("Error parsing cep to Long: " + cepAsString);
-            e.printStackTrace();
-        }
-        employeeEntity.setLogradouro(employeeEntityAux.getLogradouro());
-        employeeEntity.setComplemento(employeeEntityAux.getComplemento());
-        employeeEntity.setBairro(employeeEntityAux.getBairro());
-        employeeEntity.setLocalidade(employeeEntityAux.getLocalidade());
-        employeeEntity.setUf(employeeEntityAux.getUf());
-
         EmployeeEntity createEmployee = employeeService.createEmployee(employeeEntity);
         return new ResponseEntity<>(createEmployee, HttpStatus.CREATED);
     }
