@@ -5,7 +5,6 @@ import styles from "./employees.module.css"
 import { useState } from "react"
 import { RegisterEmployee } from "@/components/register/page"
 import { Employee } from "@/resources/employee/employee.resource"
-import Link from "next/link"
 
 export default function EmployeeListPage() {
     const [showForm, setShowForm] = useState(false)
@@ -35,36 +34,32 @@ export default function EmployeeListPage() {
                 {/* curto-circuito */}
                 {showForm && <RegisterEmployee onRegister={addEmployee} />}
 
-                <table className={styles.EmployeeListPageTable}>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Cargo</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {employeeData.map((employee, index) => (
-                            <tr key={index}>
-                                <td>
-                                    {employee.firstName} {employee.lastName}
-                                </td>
-                                <td>{employee.email}</td>
-                                <td>{employee.enumRole}</td>
-                                <td>
-                                    <Link
-                                        href={`/employees/employeeDetails/${index}`}
-                                    >
-                                        Detalhes
-                                    </Link>
-                                </td>
-                                <td>Editar</td>
-                                <td>Deletar</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                {employeeData.map((employee, index) => (
+                    <details key={index}>
+                        <summary>
+                            Nome do funcionário: {employee.firstName}{" "}
+                            {employee.lastName}
+                        </summary>
+                        <div>
+                            <p>
+                                Nome completo: {employee.firstName}{" "}
+                                {employee.lastName}
+                            </p>
+                            <p>Sexo: {employee.enumGender}</p>
+                            <p>Email: {employee.email}</p>
+                            <p>Data de Nascimento: {employee.birthDate}</p>
+                            <p>RG: {employee.rg}</p>
+                            <p>CPF: {employee.cpf}</p>
+                            <p>Cargo: {employee.enumRole}</p>
+                            <p>Salário: {employee.salary}</p>
+                            <p>CEP: {employee.cep}</p>
+                            <p>Cidade: {employee.localidade}</p>
+                            <p>Estado: {employee.uf}</p>
+                            <p>Data de Admissão: {employee.admissionDate}</p>
+                            <p>Data de Registro: {employee.createdAt}</p>
+                        </div>
+                    </details>
+                ))}
             </div>
         </Template>
     )
