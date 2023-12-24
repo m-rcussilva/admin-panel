@@ -36,6 +36,20 @@ export default function EmployeeListPage() {
         setEmployeeData([...employeeData, employee])
     }
 
+    const handleDeleteEmployee = async (id: number | undefined) => {
+        if (id !== undefined) {
+            try {
+                await employeeService.deleteEmployee(id)
+                // Remove o funcionário da lista local após a exclusão no servidor
+                setEmployeeData(
+                    employeeData.filter((employee) => employee.id !== id)
+                )
+            } catch (error) {
+                console.error("Erro ao excluir funcionário:", error)
+            }
+        }
+    }
+
     return (
         <Template>
             <div className={styles.EmployeeListPageContainer}>
@@ -44,7 +58,10 @@ export default function EmployeeListPage() {
                         Lista de Funcionários
                     </h2>
 
-                    <button onClick={handleShowForm}>
+                    <button
+                        onClick={handleShowForm}
+                        className={styles.ToggleBtnAddCancelEmployee}
+                    >
                         {showForm ? "Cancelar" : "+ Funcionário"}
                     </button>
                 </div>
@@ -113,10 +130,12 @@ export default function EmployeeListPage() {
                             </p>
 
                             <div className={styles.ActionButtons}>
-                                <button className={styles.EditButton}>
-                                    Editar
-                                </button>
-                                <button className={styles.DeleteButton}>
+                                <button
+                                    onClick={() =>
+                                        handleDeleteEmployee(employee.id)
+                                    }
+                                    className={styles.DeleteButton}
+                                >
                                     Deletar
                                 </button>
                             </div>

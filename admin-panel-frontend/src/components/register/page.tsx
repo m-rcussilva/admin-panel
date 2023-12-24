@@ -115,6 +115,7 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                                 id="enumGender"
                                 value={formData.enumGender}
                                 onChange={handleChange}
+                                className={styles.Select}
                             >
                                 <option value={EnumGender.MALE}>
                                     Masculino
@@ -190,6 +191,7 @@ export function RegisterEmployee({ onRegister }: RegisterEmployeeProps) {
                                 id="enumRole"
                                 value={formData.enumRole}
                                 onChange={handleChange}
+                                className={styles.Select}
                             >
                                 <option value={EnumRole.IT}>
                                     Tecnologia da Informação

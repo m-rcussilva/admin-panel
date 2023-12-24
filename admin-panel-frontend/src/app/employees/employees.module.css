@@ -9,6 +9,17 @@
     padding: 1rem 0;
 }
 
+.ToggleBtnAddCancelEmployee {
+    padding: 0.4rem 1rem;
+    background-color: #409d44;
+    color: var(--white-text-color);
+    border: none;
+    border-radius: 4px;
+}
+.ToggleBtnAddCancelEmployee:hover {
+    background-color: #348037;
+}
+
 .Details {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -17,7 +28,7 @@
 }
 
 .Summary {
-    background-color: #4caf50;
+    background-color: #8b9dc3;
     color: #fff;
     padding: 10px;
     cursor: pointer;
@@ -33,7 +44,6 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-end; */
 }
 
 .DetailsContent p {
@@ -46,13 +56,11 @@
 
 .ActionButtons {
     display: flex;
-    /* justify-content: flex-end; */
     margin-top: 10px;
 }
 
-.EditButton,
 .DeleteButton {
-    background-color: #3498db;
+    background-color: #db3434;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -63,5 +71,5 @@
 
 .EditButton:hover,
 .DeleteButton:hover {
-    background-color: #2980b9;
+    background-color: #b92929;
 }

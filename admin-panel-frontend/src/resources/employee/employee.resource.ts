@@ -2,6 +2,7 @@ import { EnumGender } from "@/types/EnumGender"
 import { EnumRole } from "@/types/EnumRole"
 
 export class Employee {
+    id?: number
     firstName?: string
     lastName?: string
     enumGender?: EnumGender

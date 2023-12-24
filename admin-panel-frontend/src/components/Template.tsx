@@ -50,18 +50,18 @@ function Sidebar() {
                 <h3>Painel Administrativo</h3>
             </header>
 
-            <ul>
-                <li>
+            <ul className={styles.SidebarUl}>
+                <li className={styles.SidebarLi}>
                     <MdDashboard />
                     <label htmlFor="">Dashboard</label>
                 </li>
 
-                <li>
+                <li className={styles.SidebarLi}>
                     <MdOutlineSettings />
                     <label htmlFor="">Configurações</label>
                 </li>
 
-                <li>
+                <li className={styles.SidebarLi}>
                     <FaPowerOff />
                     <label htmlFor="">Sair</label>
                 </li>

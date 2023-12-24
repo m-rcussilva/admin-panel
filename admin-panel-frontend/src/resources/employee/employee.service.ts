@@ -21,4 +21,32 @@ export class EmployeeService {
             }
         })
     }
+
+    getEmployeeById(id: number) {
+        return fetch(`${this.baseURL}/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }
+
+    updateEmployee(id: number, data: Employee) {
+        return fetch(`${this.baseURL}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    deleteEmployee(id: number) {
+        return fetch(`${this.baseURL}/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }
 }
