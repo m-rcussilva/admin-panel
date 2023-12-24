@@ -48,20 +48,29 @@ public class EmployeeController {
 
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteEmployeeById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @PutMapping("/employees/{id}")
-    public ResponseEntity<EmployeeEntity> updateEmployee(@PathVariable Long id,
-            @RequestBody EmployeeEntity updadaEmployeeEntity) {
-        EmployeeEntity employee = employeeService.updateEmployee(id, updadaEmployeeEntity);
-
-        if (employee != null) {
-            return new ResponseEntity<>(employee, HttpStatus.OK);
+        if (employeeService.deleteEmployeeById(id)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<EmployeeEntity> updateEmployee(@PathVariable Long id, @RequestBody EmployeeEntity updatedEmployeeEntity) {
+        Optional<EmployeeEntity> existingEmployee = employeeService.findEmployeeById(id);
+
+        if (existingEmployee.isPresent()) {
+            EmployeeEntity employee = existingEmployee.get();
+            employee.setFirstName(updatedEmployeeEntity.getFirstName());
+            employee.setLastName(updatedEmployeeEntity.getLastName());
+
+            employeeService.updateEmployee(id, updatedEmployeeEntity);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }
