@@ -11,25 +11,28 @@
 
 .ToggleBtnAddCancelEmployee {
     padding: 0.4rem 1rem;
-    background-color: #409d44;
-    color: var(--white-text-color);
+    background-color: var(--button-blue-color);
     border: none;
     border-radius: 4px;
+    color: var(--text-white-color);
 }
 .ToggleBtnAddCancelEmployee:hover {
-    background-color: #348037;
+    background-color: var(--button-blue-color-hover);
+}
+
+.EmployeesListTitle {
+    margin-bottom: 1.5rem;
 }
 
 .Details {
-    border: 1px solid #ddd;
+    border: 1px solid var(--gray-border-color);
     border-radius: 5px;
     margin-bottom: 15px;
     overflow: hidden;
 }
 
 .Summary {
-    background-color: #8b9dc3;
-    color: #fff;
+    background-color: var(--secondary-color);
     padding: 10px;
     cursor: pointer;
     outline: none;
@@ -60,8 +63,8 @@
 }
 
 .DeleteButton {
-    background-color: #db3434;
-    color: #fff;
+    background-color: var(--button-red-color);
+    color: var(--text-white-color);
     border: none;
     padding: 8px 15px;
     margin-left: 5px;
@@ -71,5 +74,5 @@
 
 .EditButton:hover,
 .DeleteButton:hover {
-    background-color: #b92929;
+    background-color: var(--button-red-color-hover);
 }

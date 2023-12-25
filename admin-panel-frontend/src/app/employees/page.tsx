@@ -55,7 +55,7 @@ export default function EmployeeListPage() {
             <div className={styles.EmployeeListPageContainer}>
                 <div className={styles.EmployeeListPageAddEmployeBtn}>
                     <h2 className={styles.EmployeeListPageTitle}>
-                        Lista de Funcionários
+                        Registre um novo funcionário
                     </h2>
 
                     <button
@@ -68,6 +68,12 @@ export default function EmployeeListPage() {
 
                 {/* curto-circuito */}
                 {showForm && <RegisterEmployee onRegister={addEmployee} />}
+
+                <div className={styles.EmployeesListTitle}>
+                    <header>
+                        <h3>Lista de Funcionários:</h3>
+                    </header>
+                </div>
 
                 {employeeData.map((employee, index) => (
                     <details key={index} className={styles.Details}>
