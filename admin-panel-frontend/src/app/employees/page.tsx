@@ -17,9 +17,20 @@ export default function EmployeeListPage() {
         const fetchData = async () => {
             try {
                 const response = await employeeService.getAllEmployees()
-                const employeeDataFromAPI: Employee[] = await response.json()
 
-                setEmployeeData(employeeDataFromAPI)
+                console.log("Status da resposta: ", response.status)
+
+                if (response.ok) {
+                    const employeeDataFromAPI: Employee[] =
+                        await response.json()
+
+                    setEmployeeData(employeeDataFromAPI)
+                } else {
+                    console.error(
+                        "Erro ao buscar funcionários do backend:",
+                        response.status
+                    )
+                }
             } catch (error) {
                 console.error("Erro ao buscar funcionários do backend:", error)
             }
@@ -40,7 +51,6 @@ export default function EmployeeListPage() {
         if (id !== undefined) {
             try {
                 await employeeService.deleteEmployee(id)
-                // Remove o funcionário da lista local após a exclusão no servidor
                 setEmployeeData(
                     employeeData.filter((employee) => employee.id !== id)
                 )
