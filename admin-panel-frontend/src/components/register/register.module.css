@@ -59,3 +59,17 @@
 .SubmitButton:hover {
     background-color: var(--button-blue-color-hover);
 }
+
+@media screen and (max-width: 625px) {
+    .FormBoxContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .FormInputMarginRight {
+        margin-right: 0;
+    }
+    .FormInputMarginLeft {
+        margin-left: 0;
+    }
+}

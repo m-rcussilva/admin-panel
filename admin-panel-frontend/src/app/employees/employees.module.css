@@ -76,3 +76,20 @@
 .DeleteButton:hover {
     background-color: var(--button-red-color-hover);
 }
+
+@media screen and (max-width: 625px) {
+    .EmployeeListPageAddEmployeBtn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .EmployeeListPageTitle {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .EmployeeListPageTitle {
+        font-size: 1.2rem;
+    }
+}
