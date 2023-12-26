@@ -8,6 +8,7 @@ import { IoMdClose } from "react-icons/io"
 import { MdDashboard } from "react-icons/md"
 import { MdOutlineSettings } from "react-icons/md"
 import { FaPowerOff } from "react-icons/fa"
+import { useRouter } from "next/navigation"
 
 interface TemplateProps {
     children: React.ReactNode
@@ -25,8 +26,14 @@ export function Template({ children }: TemplateProps) {
 function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
+    const router = useRouter()
+
     const toggleMenu = () => {
         setIsSidebarOpen(!isSidebarOpen)
+    }
+
+    const handleLogout = () => {
+        router.push("/login")
     }
 
     return (
@@ -52,18 +59,24 @@ function Sidebar() {
 
             <ul className={styles.SidebarUl}>
                 <li className={styles.SidebarLi}>
-                    <MdDashboard />
-                    <label htmlFor="">Dashboard</label>
+                    <button className={styles.ButtonLogout}>
+                        <MdDashboard /> <span>Dashboard</span>
+                    </button>
                 </li>
 
                 <li className={styles.SidebarLi}>
-                    <MdOutlineSettings />
-                    <label htmlFor="">Configurações</label>
+                    <button className={styles.ButtonLogout}>
+                        <MdOutlineSettings /> <span>Configurações</span>
+                    </button>
                 </li>
 
                 <li className={styles.SidebarLi}>
-                    <FaPowerOff />
-                    <label htmlFor="">Sair</label>
+                    <button
+                        className={styles.ButtonLogout}
+                        onClick={handleLogout}
+                    >
+                        <FaPowerOff /> <span>Sair</span>
+                    </button>
                 </li>
             </ul>
         </aside>

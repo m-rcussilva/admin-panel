@@ -43,7 +43,6 @@ export default function LoginPage() {
         <div className={styles.HomeContainer}>
             <main className={styles.HomeMain}>
                 <h1 className={styles.HomeTitle}>Painel Administrativo</h1>
-                <h3>Faça o seu Login</h3>
 
                 <form
                     action=""

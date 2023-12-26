@@ -3,6 +3,12 @@
     margin: 0 auto;
 }
 
+.HeaderLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .SidebarContainer {
     width: 250px;
     height: 100%;
@@ -58,8 +64,15 @@
     background-color: var(--secondary-color);
 }
 
-.SidebarLi label {
-    margin-left: 10px;
-    cursor: pointer;
+.ButtonLogout {
+    background-color: transparent;
+    border: none;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
     font-weight: bold;
+}
+.ButtonLogout span {
+    margin-left: 10px;
 }
