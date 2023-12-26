@@ -66,4 +66,5 @@ Inicie o servidor:
 ### TODO
 
 1. Utilizar o Spring Security e JWT para autenticação e autorização do admin.
-2. Ao adicionar um novo funcionário não está sendo possível excluí-lo, para que isso ocorra é preciso atualizar a página.  
+2. Ao adicionar um novo funcionário não está sendo possível excluí-lo, para que isso ocorra é preciso atualizar a página.
+3. Buscar funcionários por nome ou cargo.  
